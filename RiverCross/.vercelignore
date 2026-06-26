@@ -1,0 +1,5 @@
+# Ignore Next.js detection files
+.next
+package-lock.json
+# Force Nitro output
+!.vercel/output
