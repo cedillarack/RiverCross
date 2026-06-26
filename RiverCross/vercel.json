@@ -1,19 +1,23 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null,
+  "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": ".vercel/output/static",
   "installCommand": "npm install",
-  "functions": {
-    "functions/**/*.mjs": {
-      "runtime": "nodejs22.x",
-      "maxDuration": 30
-    }
-  },
-  "rewrites": [
+  "framework": null,
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/__server.func/index.mjs"
+      "src": "package.json",
+      "use": "@vercel/nitro@latest",
+      "config": {
+        "includeFiles": [".vercel/output/**"]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/__server.func/index.mjs"
     }
   ]
 }
